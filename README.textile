@@ -1,0 +1,11 @@
+h1. Ding tema sites
+
+This repository creates support for tema sites on ding sites, it does however require "Panels Slug":https://github.com/cableman/panels_slug. Panels slug requires some changes to the core of ding, which shortly explained involves remove library_slug and changing panels.
+
+h3. Requirements
+
+* "Panels Slug":https://github.com/cableman/panels_slug
+
+h3. Patching ding core modules
+
+*Not written yet*
