@@ -1,3 +1,116 @@
 <?php
 
+/**
+ * Implementation of hook_form_alter().
+ */
+function ding_content_tema_form_alter(&$form, $form_state, $form_id) {
+  // Fix some issus with the layout for static tema pages
+  if ($form_id == 'static_tema_page_node_form') {
+    // Hide the comment settings form and disable comments.
+    unset($form['comment_settings']);
+    $form['comment'] = array(
+      '#type' => 'value',
+      '#value' => 0,
+    );
+
+    // Set tema ref field to required (done here, so its only required on the node form).
+    if (isset($form['field_tema_ref'])) {
+      $form['field_tema_ref']['#required'] = TRUE;
+    }
+
+    // Don't display menu settings and attachments.
+    unset($form['attachments']);
+
+    // Hide the revision settings and never allow creating new versions
+    unset($form['revision_information']);
+    $form['revision'] = array(
+      '#type' => 'value',
+      '#value' => FALSE,
+    );
+  }
+}
+
+/**
+ * Implementation of hook_nodeapi().
+ *
+ * Create menu for the newly created tema site.
+ *
+ */
+function ding_content_tema_nodeapi(&$node, $op, $teaser, $page) {
+  if ($node->type == 'tema_site') {
+    if ($op == 'insert') {
+      // Create a menu for the newly create tema site
+      _ding_tema_menu($node, FALSE);
+    }
+    elseif ($op == 'update') {
+      if (db_result(db_query("SELECT menu_name FROM {menu_custom} WHERE menu_name = 'tema-site-%d' LIMIT 1", $node->nid))) {
+        // If so, update the menu with the new name.
+        _ding_tema_menu($node);
+      }
+      // Otherwise, create a new menu.
+      else {
+        _ding_tema_menu($node, FALSE);
+      }
+    }
+  }
+}
+
+/**
+ * Helper function to create menu for them sites.
+ *
+ * @param <type> $node
+ * @param <type> $update
+ */
+function _ding_tema_menu($node, $update = TRUE) {
+  $menu = array(
+    'menu_name' => 'tema-site-' . $node->nid,
+    'title' => $node->title,
+    'description' => t('Navigation menu for "%site" tema site.', array('%site' => $node->title)),
+  );
+  if ($update) {
+    drupal_write_record('menu_custom', $menu, array('menu_name'));
+  }
+  else {
+    // Create the main menu
+    drupal_write_record('menu_custom', $menu);
+
+    // Add blog link
+     $item = array(
+      'menu_name' => $menu['menu_name'],
+      'weight' => -50,
+      'link_title' => t('Blog'),
+      'link_path' => 'temaer/'.$node->panels_slug.'/blog',
+      'plid' => 0,
+      'customized' => 1,
+    );
+    $mlid = menu_link_save($item); // Set router_path to empty XXX FIX ME
+    db_query('UPDATE menu_links SET router_path = \'temaer/%/blog\' WHERE mlid=%d', $mlid);
+
+     // Add event link
+     $item = array(
+      'menu_name' => $menu['menu_name'],
+      'weight' => -49,
+      'link_title' => t('Events'),
+      'link_path' => 'temaer/'.$node->panels_slug.'/arrangementer',
+      'plid' => 0,
+      'customized' => 1,
+    );
+    $mlid = menu_link_save($item); // Set router_path to empty XXX FIX ME
+    db_query('UPDATE menu_links SET router_path = \'temaer/%/arrangementer\' WHERE mlid=%d', $mlid);
+
+
+    // When creating a menu, insert it into the allowed menus for the
+    // page content type.
+    $setting = variable_get('static_tema_page_menu_settings', array());
+    $setting[$menu['menu_name']] = $menu['menu_name'];
+    variable_set('static_tema_page_menu_settings', $setting);
+
+    // Also add menu to menu blocks "the menu selected by the page".
+    $setting = variable_get('menu_block_menu_order', array());
+    $setting[$menu['menu_name']] = '';
+    variable_set('menu_block_menu_order', $setting);
+  }
+}
+
+// Load the feature information
 include_once('ding_content_tema.features.inc');
