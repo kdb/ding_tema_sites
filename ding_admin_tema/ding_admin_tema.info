@@ -1,0 +1,8 @@
+; $Id$
+name = Ding! tema admin
+description = Tweaks and overrides for the administarion of tema sites.
+package = Ding! tema
+core = 6.x
+dependencies[] = ding_library
+dependencies[] = ding_content_tema
+dependencies[] = menu_block

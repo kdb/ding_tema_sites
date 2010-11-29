@@ -1,0 +1,3 @@
+<?php
+
+include_once('ding_content_tema.features.inc');
