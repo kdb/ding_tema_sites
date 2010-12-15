@@ -44,7 +44,7 @@ function ding_panels_tema_header_content_type_render($subtype, $conf, $panel_arg
   switch($subtype) {
     case 'tema_header':
       if ($node->type == 'tema_site') {
-        $block->content = theme('ding_panels_tema_content_header', $node);
+        $block->content = theme('ding_panels_tema_content_header', $node, $conf);
       }
       break;
   }
@@ -65,10 +65,17 @@ function ding_panels_tema_header_content_type_admin_title($subtype, $conf, $cont
  * Returns an edit form for the content type.
  */
 function ding_panels_tema_header_content_type_edit_form(&$form, &$form_state) {
+  $form['display_header_image'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Display header image'),
+    '#description' => t('Whether a the library title should show the (quite large) picture of the library.'),
+    '#default_value' => $form_state['conf']['display_header_image'],
+  );
 }
 
 /**
  * Submit handler for the content type editing form.
  */
 function ding_panels_tema_header_content_type_edit_form_submit(&$form, &$form_state) {
+    $form_state['conf']['display_header_image'] = (bool) $form_state['values']['display_header_image'];
 }
