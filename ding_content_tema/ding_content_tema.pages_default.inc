@@ -386,6 +386,7 @@ function ding_content_tema_default_page_manager_handlers() {
       'context' => 'argument_nid_1',
       'override_title' => 0,
       'override_title_text' => '',
+      'display_header_image' => TRUE,
     );
     $pane->cache = array();
     $pane->style = array(
