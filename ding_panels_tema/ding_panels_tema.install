@@ -15,6 +15,7 @@ function ding_panels_tema_update_6001() {
   foreach ($types as $key => $obj) {
     $prefixes[$key] = variable_get('panels_slug_' .$key. '_path_prefix', '');
   }
+  variable_set('panels_subsites_prefix', $prefixes);
 
   // Convert user supplied
   variable_set('panels_subsites_user', variable_get('panels_slug_user_supplied_slug', array()));
