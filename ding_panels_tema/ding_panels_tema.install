@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * Update panels_slug configurations to the new panels_subsites configuration.
+ *
+ */
+function ding_panels_tema_update_6001() {
+  // Convert selected content types
+  $content_types = variable_get('panels_slug_selected_node_types', array());
+  variable_set('panels_subsites_content_types', $content_types);
+  
+  // Convert prefixes
+  $types = node_get_types();
+  $prefixes = array();
+  foreach ($types as $key => $obj) {
+    $prefixes[$key] = variable_get('panels_slug_' .$key. '_path_prefix', '');
+  }
+
+  // Convert user supplied
+  variable_set('panels_subsites_user', variable_get('panels_slug_user_supplied_slug', array()));
+
+  // Convert field ref's
+  $result = db_query('SELECT * FROM {panels_slug_settings} WHERE ref != \'\'');
+  while ($row = db_fetch_object($result)) {
+    db_query('INSERT INTO {panels_subsites_settings} (content_type, nodetype, ref, weight)
+                          VALUES ("%s", "%s", "%s", %d)',
+                          $row->content_type, $row->nodetype,
+                          $row->ref, $row->weight);
+  }
+
+  // Convert slugs
+  $result = db_query('SELECT * FROM {panels_slug}');
+  while ($row = db_fetch_object($query)) {
+    db_query("INSERT INTO {panels_subsites_slugs}
+                          (slug, nid, nodetype)
+                   VALUES ('%s', %d, '%s')", $row->slug, $row->nid, $row->type);
+  }
+}
