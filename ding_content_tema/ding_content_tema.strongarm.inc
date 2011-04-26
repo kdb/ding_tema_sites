@@ -198,14 +198,14 @@ function ding_content_tema_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_static_tema_page_pattern';
-  $strongarm->value = '[panels_slug_prefix]/[panels_slug]/[title-raw]';
+  $strongarm->value = '[panels_subsites_prefix]/[panels_subsites_slug]/[title-raw]';
 
   $export['pathauto_node_static_tema_page_pattern'] = $strongarm;
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_tema_site_pattern';
-  $strongarm->value = '[panels_slug_prefix]/[panels_slug]';
+  $strongarm->value = '[panels_subsites_prefix]/[panels_subsites_slug]';
 
   $export['pathauto_node_tema_site_pattern'] = $strongarm;
   return $export;
