@@ -6,30 +6,37 @@
 function ding_content_tema_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: configure field refs
-  $permissions['configure field refs'] = array(
-    'name' => 'configure field refs',
+  // Exported permission: configure sub-sites
+  $permissions['configure sub-sites'] = array(
+    'name' => 'configure sub-sites',
+    'roles' => array(
+      '0' => 'redaktør (AKB)',
+      '1' => 'super-admin',
+    ),
+  );
+
+  // Exported permission: configure sub-sites refs
+  $permissions['configure sub-sites refs'] = array(
+    'name' => 'configure sub-sites refs',
     'roles' => array(
       '0' => 'super-admin',
     ),
   );
 
-  // Exported permission: configure slugs
-  $permissions['configure slugs'] = array(
-    'name' => 'configure slugs',
+  // Exported permission: configure sub-sites slugs
+  $permissions['configure sub-sites slugs'] = array(
+    'name' => 'configure sub-sites slugs',
     'roles' => array(
-      '0' => 'formidler',
-      '1' => 'redaktør (AKB)',
-      '2' => 'super-admin',
+      '0' => 'redaktør (AKB)',
+      '1' => 'super-admin',
     ),
   );
 
-  // Exported permission: configure users
-  $permissions['configure users'] = array(
-    'name' => 'configure users',
+  // Exported permission: configure sub-sites users
+  $permissions['configure sub-sites users'] = array(
+    'name' => 'configure sub-sites users',
     'roles' => array(
-      '0' => 'anonymous user',
-      '1' => 'super-admin',
+      '0' => 'super-admin',
     ),
   );
 
@@ -157,14 +164,6 @@ function ding_content_tema_user_default_permissions() {
       '0' => 'formidler',
       '1' => 'redaktør (AKB)',
       '2' => 'super-admin',
-    ),
-  );
-
-  // Exported permission: select content types
-  $permissions['select content types'] = array(
-    'name' => 'select content types',
-    'roles' => array(
-      '0' => 'super-admin',
     ),
   );
 
