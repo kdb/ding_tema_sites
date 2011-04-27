@@ -450,8 +450,8 @@ function ding_content_tema_default_page_manager_pages() {
   $page->arguments = array(
     'slug' => array(
       'id' => 1,
-      'identifier' => 'Panels slug',
-      'name' => 'panels_slug',
+      'identifier' => 'Sub-sites slug',
+      'name' => 'slug',
       'settings' => array(),
     ),
   );
@@ -507,7 +507,7 @@ function ding_content_tema_default_page_manager_pages() {
       'items_per_page' => '10',
       'offset' => '0',
       'context' => array(
-        0 => 'argument_panels_slug_1',
+        0 => 'argument_slug_1',
       ),
       'override_title' => 0,
       'override_title_text' => '',
@@ -573,9 +573,10 @@ function ding_content_tema_default_page_manager_pages() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'context' => 'argument_panels_slug_1',
+      'context' => 'argument_slug_1',
       'override_title' => 0,
       'override_title_text' => '',
+      'display_header_image' => FALSE,
     );
     $pane->cache = array();
     $pane->style = array(
@@ -632,8 +633,8 @@ function ding_content_tema_default_page_manager_pages() {
   $page->arguments = array(
     'slug' => array(
       'id' => 1,
-      'identifier' => 'Panels slug',
-      'name' => 'panels_slug',
+      'identifier' => 'Sub-sites slug',
+      'name' => 'slug',
       'settings' => array(),
     ),
   );
@@ -771,9 +772,10 @@ function ding_content_tema_default_page_manager_pages() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'context' => 'argument_panels_slug_1',
+      'context' => 'argument_slug_1',
       'override_title' => 0,
       'override_title_text' => '',
+      'display_header_image' => FALSE,
     );
     $pane->cache = array();
     $pane->style = array(
