@@ -197,6 +197,62 @@ function ding_content_tema_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'panels_subsites_content_types';
+  $strongarm->value = array(
+    'library' => 'library',
+    'static_tema_page' => 'static_tema_page',
+    'article' => 0,
+    'event' => 0,
+    'feature' => 0,
+    'flexifield_link' => 0,
+    'flexifield_text' => 0,
+    'flexifield_ting_refs' => 0,
+    'profile' => 0,
+    'topic' => 0,
+    'page' => 0,
+    'campaign' => 0,
+    'tema_site' => 0,
+    'servicemeddelelse' => 0,
+    'webform' => 0,
+  );
+
+  $export['panels_subsites_content_types'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panels_subsites_prefix';
+  $strongarm->value = array(
+    'article' => '',
+    'event' => '',
+    'feature' => '',
+    'flexifield_link' => '',
+    'flexifield_text' => '',
+    'flexifield_ting_refs' => '',
+    'profile' => '',
+    'topic' => '',
+    'library' => 'biblioteker',
+    'page' => '',
+    'campaign' => '',
+    'static_tema_page' => '',
+    'tema_site' => 'temaer',
+    'servicemeddelelse' => '',
+    'webform' => '',
+  );
+
+  $export['panels_subsites_prefix'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'panels_subsites_user';
+  $strongarm->value = array(
+    'static_tema_page' => 'static_tema_page',
+    'library' => 0,
+  );
+
+  $export['panels_subsites_user'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_static_tema_page_pattern';
   $strongarm->value = '[panels_subsites_prefix]/[panels_subsites_slug]/[title-raw]';
 
