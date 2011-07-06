@@ -668,7 +668,7 @@ function ding_content_tema_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'context' => array(
-        0 => 'argument_panels_slug_1',
+        0 => 'argument_slug_1',
       ),
     );
     $pane->cache = array();
