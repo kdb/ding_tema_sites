@@ -199,21 +199,19 @@ function ding_content_tema_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'panels_subsites_content_types';
   $strongarm->value = array(
+    'tema_site' => 'tema_site',
     'library' => 'library',
-    'static_tema_page' => 'static_tema_page',
     'article' => 0,
-    'event' => 0,
     'feature' => 0,
-    'flexifield_link' => 0,
-    'flexifield_text' => 0,
-    'flexifield_ting_refs' => 0,
     'profile' => 0,
     'topic' => 0,
+    'flexifield_link' => 0,
+    'flexifield_ting_refs' => 0,
+    'flexifield_text' => 0,
+    'event' => 0,
+    'static_tema_page' => 0,
     'page' => 0,
     'campaign' => 0,
-    'tema_site' => 0,
-    'servicemeddelelse' => 0,
-    'webform' => 0,
   );
 
   $export['panels_subsites_content_types'] = $strongarm;
@@ -235,8 +233,8 @@ function ding_content_tema_strongarm() {
     'campaign' => '',
     'static_tema_page' => '',
     'tema_site' => 'temaer',
-    'servicemeddelelse' => '',
-    'webform' => '',
+    'topti' => '',
+    'topti_importer' => '',
   );
 
   $export['panels_subsites_prefix'] = $strongarm;
@@ -245,7 +243,7 @@ function ding_content_tema_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'panels_subsites_user';
   $strongarm->value = array(
-    'static_tema_page' => 'static_tema_page',
+    'tema_site' => 'tema_site',
     'library' => 0,
   );
 
