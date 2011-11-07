@@ -51,16 +51,15 @@ function ding_panels_tema_theme($existing, $type, $theme, $path) {
   return array(
     'ding_panels_tema_content_header' => array(
       'arguments' => array('node' => NULL, 'conf' => NULL),
-      'template' => 'templates/ding-panels-tema-header',
-      'preprocess functions' => array('ding_panels_tema_preprocess_header'),
+      'template' => 'ding-panels-tema-header',
     ),
   );
 }
 
 /**
- * Preprocess variables for header.tpl.php.
+ * Preprocess variables for ding-panels-tema-header.tpl.php
  */
-function ding_panels_tema_preprocess_header(&$variables, $hook) {
+function ding_panels_tema_preprocess_ding_panels_tema_content_header(&$variables, $hook) {
   $node = $variables['node'];
 
   // Create title image
