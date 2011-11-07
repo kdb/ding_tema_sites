@@ -1,6 +1,5 @@
-; $Id$
 name = Ding! panels tema
-description = Tema panels plugins used by tema sub-sites.
+description = Panels plugins used by tema sub-sites.
 package = Ding! tema
 core = 6.x
 dependencies[] = ding_content
@@ -8,3 +7,4 @@ dependencies[] = panels
 dependencies[] = menu_block
 dependencies[] = panels_subsites
 dependencies[] = content
+
