@@ -114,3 +114,4 @@ function _ding_tema_menu($node, $update = TRUE) {
 
 // Load the feature information
 include_once('ding_content_tema.features.inc');
+

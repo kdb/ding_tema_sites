@@ -1,8 +1,6 @@
 <?php
-// $Id$
-
 /**
- * @file library.inc
+ * @file
  * Provides several tema related panels content types.
  */
 
