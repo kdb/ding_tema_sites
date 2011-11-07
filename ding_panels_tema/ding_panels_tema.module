@@ -4,26 +4,6 @@
  * Handles Panels plugins and additions for tema sites.
  */
 
-define('MODULENAME_MINIMUM_CTOOLS_API_VERSION', '1.3');
-define('MODULENAME_MAXIMUM_CTOOLS_API_VERSION', '1.8');
-
-/**
- * Ensures that ctools has the right API version.
- *
- * TODO: Why do we need this?
- */
-function ding_panels_tema_requirements($phase) {
-  $requirements = array();
-  if (!module_invoke('ctools', 'api_version', MODULENAME_MINIMUM_CTOOLS_API_VERSION, MODULENAME_MAXIMUM_CTOOLS_API_VERSION)) {
-    $requirements['MODULENAME_ctools'] = array(
-      'title' => t('MODULENAME required Chaos Tool Suite (CTools) API Version'),
-      'value' => t('Between @a and @b', array('@a' => MODULENAME_MINIMUM_CTOOLS_API_VERSION, '@b' => MODULENAME_MAXIMUM_CTOOLS_API_VERSION)),
-      'severity' => REQUIREMENT_ERROR,
-    );
-  }
-  return $requirements;
-}
-
 /**
  * Implementation of hook_ctools_plugin_api().
  */
