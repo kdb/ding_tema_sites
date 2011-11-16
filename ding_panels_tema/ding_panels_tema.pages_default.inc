@@ -14,7 +14,7 @@ function ding_panels_tema_default_page_manager_handlers() {
   $handler->handler = 'panel_context';
   $handler->weight = -22;
   $handler->conf = array(
-    'title' => 'Teme sites',
+    'title' => 'Temasites',
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'css_id' => '',
@@ -267,7 +267,7 @@ function ding_panels_tema_default_page_manager_handlers() {
       'menu_name' => '_active',
       'parent_mlid' => 0,
       'title_link' => 0,
-      'admin_title' => 'Tema site statis menu (level 1+)',
+      'admin_title' => 'Tema site static menu (level 1+)',
       'level' => '2',
       'follow' => 0,
       'depth' => 0,

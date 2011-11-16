@@ -58,8 +58,8 @@ function ding_content_tema_nodeapi(&$node, $op, $teaser, $page) {
 /**
  * Helper function to create menu for them sites.
  *
- * @param <type> $node
- * @param <type> $update
+ * @param $node
+ * @param $update
  */
 function _ding_tema_menu($node, $update = TRUE) {
   $menu = array(
