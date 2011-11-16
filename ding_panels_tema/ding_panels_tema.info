@@ -3,8 +3,10 @@ description = Panels plugins used by tema sub-sites.
 package = Ding! tema
 core = 6.x
 dependencies[] = ding_content_tema
-dependencies[] = panels
-dependencies[] = menu_block
-dependencies[] = panels_subsites
-dependencies[] = content
+features[ctools][] = "page_manager:pages_default:1"
+features[page_manager_handlers][] = "node_view_panel_context_8"
+features[page_manager_handlers][] = "node_view_panel_context_9"
+features[page_manager_pages][] = "tema_articles"
+features[page_manager_pages][] = "tema_events"
+features[page_manager_pages][] = "tema_sites_overview"
 

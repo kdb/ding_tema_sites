@@ -3,7 +3,7 @@
 /**
  * Implementation of hook_default_page_manager_handlers().
  */
-function ding_content_tema_default_page_manager_handlers() {
+function ding_panels_tema_default_page_manager_handlers() {
   $export = array();
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
@@ -392,7 +392,7 @@ function ding_content_tema_default_page_manager_handlers() {
 /**
  * Implementation of hook_default_page_manager_pages().
  */
-function ding_content_tema_default_page_manager_pages() {
+function ding_panels_tema_default_page_manager_pages() {
   $page = new stdClass;
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;

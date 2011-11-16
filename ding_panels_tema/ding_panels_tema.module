@@ -5,15 +5,6 @@
  */
 
 /**
- * Implementation of hook_ctools_plugin_api().
- */
-function ding_panels_tema_ctools_plugin_api($module, $api) {
-  if ($module == 'page_manager' && $api == 'pages_default') {
-    return array('version' => 1);
-  }
-}
-
-/**
  * Implementation of hook_ctools_plugin_directory().
  *
  * Tells CTools (and thus Panels) where to look for plugin code.
@@ -61,4 +52,6 @@ function ding_panels_tema_preprocess_ding_panels_tema_content_header(&$variables
   $tree = menu_tree_build($conf);
   $variables['menu'] = $tree['content'];
 }
+
+include_once('ding_panels_tema.features.inc');
 
