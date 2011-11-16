@@ -8,7 +8,7 @@ function ding_panels_tema_default_page_manager_handlers() {
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'node_view_panel_context_8';
+  $handler->name = 'node_view_panel_context_tema_site';
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
@@ -189,11 +189,11 @@ function ding_panels_tema_default_page_manager_handlers() {
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
 
-  $export['node_view_panel_context_8'] = $handler;
+  $export['node_view_panel_context_tema_site'] = $handler;
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'node_view_panel_context_9';
+  $handler->name = 'node_view_panel_context_static_tema_page';
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
@@ -385,7 +385,7 @@ function ding_panels_tema_default_page_manager_handlers() {
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
 
-  $export['node_view_panel_context_9'] = $handler;
+  $export['node_view_panel_context_static_tema_page'] = $handler;
   return $export;
 }
 
