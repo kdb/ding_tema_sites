@@ -1,5 +1,4 @@
 core = "6.x"
-dependencies[] = "content_permissions"
 dependencies[] = "ctools"
 dependencies[] = "ding_content"
 dependencies[] = "ding_library"
