@@ -23,6 +23,7 @@ function ding_panels_tema_theme($existing, $type, $theme, $path) {
     'ding_panels_tema_content_header' => array(
       'arguments' => array('node' => NULL, 'conf' => NULL),
       'template' => 'ding-panels-tema-header',
+      'path' => $path . '/templates',
     ),
   );
 }

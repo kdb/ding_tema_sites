@@ -4,7 +4,6 @@
  * Provides several tema related panels content types.
  */
 
-
 /**
  * Callback function to supply a list of content types.
  *
@@ -39,6 +38,7 @@ function ding_panels_tema_header_content_type_content_types() {
 function ding_panels_tema_header_content_type_render($subtype, $conf, $panel_args, $context) {
   $block = new stdClass();
   $node = isset($context->data) ? drupal_clone($context->data) : NULL;
+
   switch($subtype) {
     case 'tema_header':
       if ($node->type == 'tema_site') {
