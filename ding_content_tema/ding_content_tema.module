@@ -51,6 +51,16 @@ function ding_content_tema_nodeapi(&$node, $op, $teaser, $page) {
         _ding_tema_menu($node, FALSE);
       }
     }
+    elseif ($op == 'delete') {
+      // Delete the tema site menu and the associated links.
+      db_query("DELETE FROM {menu_links} WHERE menu_name = 'tema-site-%d'", array(
+        ':nid' => $node->nid
+      ));
+
+      db_query("DELETE FROM {menu_custom} WHERE menu_name = 'tema-site-%d'", array(
+        ':nid' => $node->nid
+      ));
+    }
   }
 }
 
