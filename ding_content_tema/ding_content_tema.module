@@ -34,7 +34,6 @@ function ding_content_tema_form_alter(&$form, $form_state, $form_id) {
  * Implementation of hook_nodeapi().
  *
  * Create menu for the newly created tema site.
- *
  */
 function ding_content_tema_nodeapi(&$node, $op, $teaser, $page) {
   if ($node->type == 'tema_site') {
@@ -75,29 +74,26 @@ function _ding_tema_menu($node, $update = TRUE) {
     drupal_write_record('menu_custom', $menu);
 
     // Add blog link
-     $item = array(
+    $item = array(
       'menu_name' => $menu['menu_name'],
-      'weight' => -50,
       'link_title' => t('Blog'),
-      'link_path' => 'temaer/'.$node->panels_slug.'/blog',
-      'plid' => 0,
-      'customized' => 1,
+      'link_path' => 'temaer/' . $node->panels_slug . '/blog',
+      'module' => 'ding_tema_sites',
+      'weight' => -50,
     );
-    $mlid = menu_link_save($item); // Set router_path to empty XXX FIX ME
-    db_query('UPDATE menu_links SET router_path = \'temaer/%/blog\' WHERE mlid=%d', $mlid);
 
-     // Add event link
-     $item = array(
+    menu_link_save($item);
+
+    // Add event link
+    $item = array(
       'menu_name' => $menu['menu_name'],
-      'weight' => -49,
       'link_title' => t('Events'),
-      'link_path' => 'temaer/'.$node->panels_slug.'/arrangementer',
-      'plid' => 0,
-      'customized' => 1,
+      'link_path' => 'temaer/' . $node->panels_slug . '/arrangementer',
+      'module' => 'ding_tema_sites',
+      'weight' => -49,
     );
-    $mlid = menu_link_save($item); // Set router_path to empty XXX FIX ME
-    db_query('UPDATE menu_links SET router_path = \'temaer/%/arrangementer\' WHERE mlid=%d', $mlid);
 
+    menu_link_save($item);
 
     // When creating a menu, insert it into the allowed menus for the
     // page content type.
