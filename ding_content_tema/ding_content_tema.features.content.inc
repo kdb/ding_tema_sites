@@ -714,7 +714,7 @@ function ding_content_tema_content_default_fields() {
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Beskrivelse',
+      'label' => 'Smagsprøve',
       'weight' => '-3',
       'description' => '',
       'type' => 'text_textarea',
@@ -778,7 +778,7 @@ function ding_content_tema_content_default_fields() {
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Brødtekst',
+      'label' => 'Beskrivelse',
       'weight' => '-1',
       'description' => '',
       'type' => 'text_textarea',
@@ -873,10 +873,10 @@ function ding_content_tema_content_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Beskrivelse');
-  t('Brødtekst');
   t('Indholdsbilleder');
   t('Listevisningsbillede');
   t('Materialer');
+  t('Smagsprøve');
   t('Tilknytning til temasite');
   t('Title billede');
   t('Vedhæftede filer');

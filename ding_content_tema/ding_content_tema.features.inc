@@ -31,7 +31,7 @@ function ding_content_tema_node_info() {
       'module' => 'features',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Titel'),
+      'title_label' => t('Navn'),
       'has_body' => '0',
       'body_label' => '',
       'min_word_count' => '0',
