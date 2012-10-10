@@ -65,6 +65,24 @@ function ding_content_tema_nodeapi(&$node, $op, $teaser, $page) {
 }
 
 /**
+ * Implements hook_views_pre_render().
+ */
+function ding_content_tema_views_pre_render(&$view) {
+  // When the event list is being displayed on a tema site page page...
+  if ($view->name == 'tema_sites' && $view->current_display == 'panel_pane_2') {
+    // Generate link to the library's event page. This assumes that
+    // we're on the main event page, but this view is not displayed
+    // anywhere else at the moment, so it should be a fairly safe assumption.
+    $url = $_GET['q'] . '/arrangementer';
+
+    // And overwrite the footer contents with it.
+    $view->display_handler->options['footer'] = l(t('More events'), $url, array(
+      'attributes' => array('class' => 'more-link'),
+    ));
+  }
+}
+
+/**
  * Helper function to create menu for them sites.
  *
  * @param $node

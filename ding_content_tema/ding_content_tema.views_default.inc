@@ -737,22 +737,25 @@ function ding_content_tema_views_default_views() {
     ),
   ));
   $handler->override_option('title', 'Arrangementer');
-  $handler->override_option('pane_title', 'Event list (frontpage)');
+  $handler->override_option('footer', 'Flere arrangementer');
+  $handler->override_option('footer_format', '1');
+  $handler->override_option('footer_empty', 0);
+  $handler->override_option('pane_title', 'Arrangementsliste');
   $handler->override_option('pane_description', '');
   $handler->override_option('pane_category', array(
     'name' => 'Tema page',
     'weight' => '0',
   ));
   $handler->override_option('allow', array(
-    'use_pager' => FALSE,
-    'items_per_page' => FALSE,
-    'offset' => FALSE,
-    'link_to_view' => FALSE,
-    'more_link' => FALSE,
-    'path_override' => FALSE,
-    'title_override' => FALSE,
-    'exposed_form' => FALSE,
-    'fields_override' => FALSE,
+    'use_pager' => 0,
+    'items_per_page' => 0,
+    'offset' => 0,
+    'link_to_view' => 0,
+    'more_link' => 'more_link',
+    'path_override' => 0,
+    'title_override' => 0,
+    'exposed_form' => 0,
+    'fields_override' => 0,
   ));
   $handler->override_option('argument_input', array(
     'field_tema_ref_nid' => array(
