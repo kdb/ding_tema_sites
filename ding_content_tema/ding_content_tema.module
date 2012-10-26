@@ -1,10 +1,14 @@
 <?php
+/**
+ * @file
+ * Tema site module main file.
+ */
 
 /**
  * Implementation of hook_form_alter().
  */
 function ding_content_tema_form_alter(&$form, $form_state, $form_id) {
-  // Fix some issus with the layout for static tema pages
+  // Fix some issus with the layout for static tema pages.
   if ($form_id == 'static_tema_page_node_form') {
     // Hide the comment settings form and disable comments.
     unset($form['comment_settings']);
@@ -13,7 +17,8 @@ function ding_content_tema_form_alter(&$form, $form_state, $form_id) {
       '#value' => 0,
     );
 
-    // Set tema ref field to required (done here, so its only required on the node form).
+    // Set tema ref field to required (done here, so its only required
+    // on the node form).
     if (isset($form['field_tema_ref'])) {
       $form['field_tema_ref']['#required'] = TRUE;
     }
@@ -21,7 +26,7 @@ function ding_content_tema_form_alter(&$form, $form_state, $form_id) {
     // Don't display menu settings and attachments.
     unset($form['attachments']);
 
-    // Hide the revision settings and never allow creating new versions
+    // Hide the revision settings and never allow creating new versions.
     unset($form['revision_information']);
     $form['revision'] = array(
       '#type' => 'value',
@@ -38,7 +43,7 @@ function ding_content_tema_form_alter(&$form, $form_state, $form_id) {
 function ding_content_tema_nodeapi(&$node, $op, $teaser, $page) {
   if ($node->type == 'tema_site') {
     if ($op == 'insert') {
-      // Create a menu for the newly create tema site
+      // Create a menu for the newly create tema site.
       _ding_tema_menu($node, FALSE);
     }
     elseif ($op == 'update') {
@@ -54,11 +59,11 @@ function ding_content_tema_nodeapi(&$node, $op, $teaser, $page) {
     elseif ($op == 'delete') {
       // Delete the tema site menu and the associated links.
       db_query("DELETE FROM {menu_links} WHERE menu_name = 'tema-site-%d'", array(
-        ':nid' => $node->nid
+        ':nid' => $node->nid,
       ));
 
       db_query("DELETE FROM {menu_custom} WHERE menu_name = 'tema-site-%d'", array(
-        ':nid' => $node->nid
+        ':nid' => $node->nid,
       ));
     }
   }
@@ -70,7 +75,7 @@ function ding_content_tema_nodeapi(&$node, $op, $teaser, $page) {
 function ding_content_tema_views_pre_render(&$view) {
   // When the event list is being displayed on a tema site page page...
   if ($view->name == 'tema_sites' && $view->current_display == 'panel_pane_2') {
-    // Generate link to the library's event page. This assumes that
+    // Generate link to the tema site event page. This assumes that
     // we're on the main event page, but this view is not displayed
     // anywhere else at the moment, so it should be a fairly safe assumption.
     $url = $_GET['q'] . '/arrangementer';
@@ -85,8 +90,10 @@ function ding_content_tema_views_pre_render(&$view) {
 /**
  * Helper function to create menu for them sites.
  *
- * @param $node
- * @param $update
+ * @param stdClass $node
+ *   Node object.
+ * @param boolean $update
+ *   Update existing data or create new data.
  */
 function _ding_tema_menu($node, $update = TRUE) {
   $menu = array(
@@ -98,10 +105,10 @@ function _ding_tema_menu($node, $update = TRUE) {
     drupal_write_record('menu_custom', $menu, array('menu_name'));
   }
   else {
-    // Create the main menu
+    // Create the main menu.
     drupal_write_record('menu_custom', $menu);
 
-    // Add blog link
+    // Add blog link.
     $item = array(
       'menu_name' => $menu['menu_name'],
       'link_title' => t('Blog'),
@@ -112,7 +119,7 @@ function _ding_tema_menu($node, $update = TRUE) {
 
     menu_link_save($item);
 
-    // Add event link
+    // Add event link.
     $item = array(
       'menu_name' => $menu['menu_name'],
       'link_title' => t('Events'),
@@ -136,6 +143,5 @@ function _ding_tema_menu($node, $update = TRUE) {
   }
 }
 
-// Load the feature information
-include_once('ding_content_tema.features.inc');
-
+// Load the feature code.
+include_once 'ding_content_tema.features.inc';
