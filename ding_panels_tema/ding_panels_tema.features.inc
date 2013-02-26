@@ -9,5 +9,3 @@ function ding_panels_tema_ctools_plugin_api() {
     return array("version" => 1);
   }
 }
-
-

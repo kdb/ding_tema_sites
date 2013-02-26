@@ -5,6 +5,7 @@
  */
 function ding_panels_tema_default_page_manager_handlers() {
   $export = array();
+
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
@@ -742,13 +743,33 @@ function ding_panels_tema_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Tema overview';
   $page->admin_description = '';
-  $page->path = 'temaer';
+  $page->path = 'temaer/!tid';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
   );
   $page->menu = array();
-  $page->arguments = array();
+  $page->arguments = array(
+    'tid' => array(
+      'id' => 1,
+      'identifier' => 'Category term ID',
+      'name' => 'term',
+      'settings' => array(
+        'input_form' => 'tid',
+        'vids' => array(
+          6 => 0,
+          10 => 0,
+          4 => 0,
+          5 => 0,
+          7 => 0,
+          8 => 0,
+          1 => 0,
+          2 => 0,
+        ),
+        'breadcrumb' => 1,
+      ),
+    ),
+  );
   $page->conf = array();
   $page->default_handlers = array();
   $handler = new stdClass;
@@ -792,7 +813,15 @@ function ding_panels_tema_default_page_manager_pages() {
     $pane->subtype = 'tema_overview-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '0',
+      'offset' => '0',
+      'context' => array(
+        0 => 'argument_term_1',
+      ),
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -828,8 +857,8 @@ function ding_panels_tema_default_page_manager_pages() {
     $pane->position = 0;
     $display->content['new-2'] = $pane;
     $display->panels['right'][0] = 'new-2';
-  $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-2';
+  $display->hide_title = PANELS_TITLE_PANE;
+  $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['tema_sites_overview'] = $page;
