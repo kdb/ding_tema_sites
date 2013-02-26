@@ -318,14 +318,7 @@ function ding_content_tema_views_default_views() {
       'validate_argument_node_access' => 0,
       'validate_argument_nid_type' => 'nid',
       'validate_argument_vocabulary' => array(
-        10 => 10,
-        6 => 0,
-        4 => 0,
-        5 => 0,
-        7 => 0,
-        8 => 0,
-        1 => 0,
-        2 => 0,
+        variable_get('ding_content_tema_category_vid', -1) => variable_get('ding_content_tema_category_vid', -1)
       ),
       'validate_argument_type' => 'tid',
       'validate_argument_transform' => 0,
