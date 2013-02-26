@@ -1,0 +1,60 @@
+<?php
+/**
+ * @file
+ * Installation code for ding_content_tema.
+ */
+
+/**
+ * Implements of hook_enable().
+ */
+function ding_eresource_enable() {
+  _ding_content_tema_check_vocabulary();
+}
+
+/**
+ * Create new vocabulary for tema site categories.
+ */
+function ding_content_tema_update_6101() {
+  _ding_content_tema_check_vocabulary();
+}
+
+/**
+ * Helper function to ensure that tema category vocabulary exists.
+ */
+function _ding_content_tema_check_vocabulary() {
+  $setting_name = 'ding_content_tema_category_vid';
+  $vid = variable_get($setting_name, FALSE);
+
+  if ($vid < 1 || !taxonomy_vocabulary_load($vid)) {
+    $t = get_t();
+
+    // Vocabulary does not exist, create it.
+    db_query("
+      INSERT INTO {vocabulary} (name, help, relations, hierarchy, multiple, required, tags, module, weight)
+      VALUES ('%s', '%s', %d, %d, %d, %d, %d, '%s', %d)
+    ", array(
+      ':name' => $t('Tema site category'),
+      ':help' => $t('Pick a category for the tema site'),
+      ':relations' => 1,
+      ':hierarchy' => 0,
+      ':multiple' => 1,
+      ':required' => 0,
+      ':tags' => 0,
+      ':module' => 'dint_content_tema',
+      ':weight' => -5,
+    ));
+
+    // Get the ID of the newly insert vocabulary.
+    $vid = db_last_insert_id('vocabulary', 'vid');
+
+    // Store the vid for future reference.
+    variable_set($setting_name, $vid);
+
+    // Enable the new vocabulary for our tema nodes.
+    db_query("
+      INSERT INTO {vocabulary_node_types} (vid, type) VALUES (%d, 'tema_site')
+    ", array(
+      ':vid' => $vid,
+    ));
+  }
+}
