@@ -1,12 +1,14 @@
-name = Ding! panels tema
-description = Panels plugins used by tema sub-sites.
-package = Ding! tema
-core = 6.x
-dependencies[] = ding_content_tema
+name = "Ding! panels tema"
+description = "Panels plugins used by tema sub-sites."
+core = "6.x"
+package = "Ding! tema"
+dependencies[] = "ctools"
+dependencies[] = "ding_content_tema"
+dependencies[] = "page_manager"
 features[ctools][] = "page_manager:pages_default:1"
-features[page_manager_handlers][] = "node_view_panel_context_tema_site"
 features[page_manager_handlers][] = "node_view_panel_context_static_tema_page"
+features[page_manager_handlers][] = "node_view_panel_context_tema_site"
+features[page_manager_handlers][] = "term_view_tema_site_category"
 features[page_manager_pages][] = "tema_articles"
 features[page_manager_pages][] = "tema_events"
 features[page_manager_pages][] = "tema_sites_overview"
-

@@ -9,191 +9,6 @@ function ding_panels_tema_default_page_manager_handlers() {
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'node_view_panel_context_tema_site';
-  $handler->task = 'node_view';
-  $handler->subtask = '';
-  $handler->handler = 'panel_context';
-  $handler->weight = -22;
-  $handler->conf = array(
-    'title' => 'Temasites',
-    'no_blocks' => 0,
-    'pipeline' => 'standard',
-    'css_id' => '',
-    'css' => '',
-    'contexts' => array(),
-    'relationships' => array(),
-    'access' => array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'node_type',
-          'settings' => array(
-            'type' => array(
-              'tema_site' => 'tema_site',
-            ),
-          ),
-          'context' => 'argument_nid_1',
-          'not' => FALSE,
-        ),
-        1 => array(
-          'name' => 'perm',
-          'settings' => array(
-            'perm' => 'access content',
-          ),
-          'context' => 'logged-in-user',
-          'not' => FALSE,
-        ),
-      ),
-      'logic' => 'and',
-    ),
-  );
-  $display = new panels_display;
-  $display->layout = 'threecol_left_stacked_tema_site';
-  $display->layout_settings = array();
-  $display->panel_settings = array(
-    'style_settings' => array(
-      'default' => NULL,
-      'top' => NULL,
-      'left' => NULL,
-      'right' => NULL,
-      'bottom' => NULL,
-      'middle' => NULL,
-      'description' => NULL,
-    ),
-  );
-  $display->cache = array();
-  $display->title = '';
-  $display->content = array();
-  $display->panels = array();
-    $pane = new stdClass;
-    $pane->pid = 'new-1';
-    $pane->panel = 'description';
-    $pane->type = 'content_field';
-    $pane->subtype = 'field_tema_description';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'normal',
-      'formatter' => 'default',
-      'context' => 'argument_nid_1',
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['description'][0] = 'new-1';
-    $pane = new stdClass;
-    $pane->pid = 'new-2';
-    $pane->panel = 'left';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'tema_sites_articles-panel_pane_1';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'use_pager' => 0,
-      'pager_id' => '',
-      'items_per_page' => '5',
-      'offset' => '0',
-      'context' => array(
-        0 => 'argument_nid_1',
-      ),
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['left'][0] = 'new-2';
-    $pane = new stdClass;
-    $pane->pid = 'new-3';
-    $pane->panel = 'middle';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'tema_sites-panel_pane_2';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => array(
-        0 => 'argument_nid_1',
-      ),
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => 'event-list',
-      'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-3'] = $pane;
-    $display->panels['middle'][0] = 'new-3';
-    $pane = new stdClass;
-    $pane->pid = 'new-4';
-    $pane->panel = 'right';
-    $pane->type = 'relevant';
-    $pane->subtype = 'relevant';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'campaign_count' => 3,
-      'context' => array(
-        0 => 'empty',
-        1 => 'empty',
-        2 => 'empty',
-      ),
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][0] = 'new-4';
-    $pane = new stdClass;
-    $pane->pid = 'new-5';
-    $pane->panel = 'top';
-    $pane->type = 'header';
-    $pane->subtype = 'tema_header';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'argument_nid_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-      'display_header_image' => TRUE,
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-5'] = $pane;
-    $display->panels['top'][0] = 'new-5';
-  $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = '0';
-  $handler->conf['display'] = $display;
-
-  $export['node_view_panel_context_tema_site'] = $handler;
-  $handler = new stdClass;
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
-  $handler->api_version = 1;
   $handler->name = 'node_view_panel_context_static_tema_page';
   $handler->task = 'node_view';
   $handler->subtask = '';
@@ -385,8 +200,298 @@ function ding_panels_tema_default_page_manager_handlers() {
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
-
   $export['node_view_panel_context_static_tema_page'] = $handler;
+
+  $handler = new stdClass;
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'node_view_panel_context_tema_site';
+  $handler->task = 'node_view';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = -22;
+  $handler->conf = array(
+    'title' => 'Temasites',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'tema_site' => 'tema_site',
+            ),
+          ),
+          'context' => 'argument_nid_1',
+          'not' => FALSE,
+        ),
+        1 => array(
+          'name' => 'perm',
+          'settings' => array(
+            'perm' => 'access content',
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display;
+  $display->layout = 'threecol_left_stacked_tema_site';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+      'bottom' => NULL,
+      'middle' => NULL,
+      'description' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass;
+    $pane->pid = 'new-1';
+    $pane->panel = 'description';
+    $pane->type = 'content_field';
+    $pane->subtype = 'field_tema_description';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'normal',
+      'formatter' => 'default',
+      'context' => 'argument_nid_1',
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['description'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'tema_sites_articles-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '5',
+      'offset' => '0',
+      'context' => array(
+        0 => 'argument_nid_1',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-2'] = $pane;
+    $display->panels['left'][0] = 'new-2';
+    $pane = new stdClass;
+    $pane->pid = 'new-3';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'tema_sites-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => array(
+        0 => 'argument_nid_1',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => 'event-list',
+      'css_class' => '',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-3'] = $pane;
+    $display->panels['middle'][0] = 'new-3';
+    $pane = new stdClass;
+    $pane->pid = 'new-4';
+    $pane->panel = 'right';
+    $pane->type = 'relevant';
+    $pane->subtype = 'relevant';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'campaign_count' => 3,
+      'context' => array(
+        0 => 'empty',
+        1 => 'empty',
+        2 => 'empty',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-4'] = $pane;
+    $display->panels['right'][0] = 'new-4';
+    $pane = new stdClass;
+    $pane->pid = 'new-5';
+    $pane->panel = 'top';
+    $pane->type = 'header';
+    $pane->subtype = 'tema_header';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'argument_nid_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'display_header_image' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-5'] = $pane;
+    $display->panels['top'][0] = 'new-5';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $export['node_view_panel_context_tema_site'] = $handler;
+
+  $handler = new stdClass;
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'term_view_tema_site_category';
+  $handler->task = 'term_view';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = -10;
+  $handler->conf = array(
+    'title' => 'Tema site category view',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'term_vocabulary',
+          'settings' => array(
+            'vids' => array(
+              9 => 9,
+            ),
+          ),
+          'context' => 'argument_terms_1',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display;
+  $display->layout = 'twocol_left_stacked';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+      'bottom' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass;
+    $pane->pid = 'new-1';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'tema_overview-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '0',
+      'offset' => '0',
+      'context' => array(
+        0 => 'argument_terms_1',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['left'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'right';
+    $pane->type = 'relevant';
+    $pane->subtype = 'relevant';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'campaign_count' => 3,
+      'campaign_offset' => 0,
+      'context' => array(
+        0 => 'empty',
+        1 => 'empty',
+        2 => 'empty',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-2'] = $pane;
+    $display->panels['right'][0] = 'new-2';
+  $display->hide_title = PANELS_TITLE_PANE;
+  $display->title_pane = 'new-1';
+  $handler->conf['display'] = $display;
+  $export['term_view_tema_site_category'] = $handler;
+
   return $export;
 }
 
@@ -434,6 +539,7 @@ function ding_panels_tema_default_page_manager_pages() {
       'identifier' => 'Sub-sites slug',
       'name' => 'slug',
       'settings' => array(),
+      'keyword' => 'slug',
     ),
   );
   $page->conf = array();
@@ -597,6 +703,7 @@ function ding_panels_tema_default_page_manager_pages() {
       'identifier' => 'Sub-sites slug',
       'name' => 'slug',
       'settings' => array(),
+      'keyword' => 'slug',
     ),
   );
   $page->conf = array();
@@ -743,33 +850,13 @@ function ding_panels_tema_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Tema overview';
   $page->admin_description = '';
-  $page->path = 'temaer/!tid';
+  $page->path = 'temaer';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
   );
   $page->menu = array();
-  $page->arguments = array(
-    'tid' => array(
-      'id' => 1,
-      'identifier' => 'Category term ID',
-      'name' => 'term',
-      'settings' => array(
-        'input_form' => 'tid',
-        'vids' => array(
-          6 => 0,
-          10 => 0,
-          4 => 0,
-          5 => 0,
-          7 => 0,
-          8 => 0,
-          1 => 0,
-          2 => 0,
-        ),
-        'breadcrumb' => 1,
-      ),
-    ),
-  );
+  $page->arguments = array();
   $page->conf = array();
   $page->default_handlers = array();
   $handler = new stdClass;
