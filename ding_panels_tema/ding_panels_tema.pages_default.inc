@@ -181,9 +181,13 @@ function ding_panels_tema_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'context' => 'relationship_related_node_1',
+      'context' => array(
+        0 => 'relationship_related_node_1',
+        1 => 'empty',
+      ),
       'override_title' => 0,
       'override_title_text' => '',
+      'display_header_image' => FALSE,
     );
     $pane->cache = array();
     $pane->style = array(
@@ -368,7 +372,10 @@ function ding_panels_tema_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'context' => 'argument_nid_1',
+      'context' => array(
+        0 => 'argument_nid_1',
+        1 => 'empty',
+      ),
       'override_title' => 0,
       'override_title_text' => '',
       'display_header_image' => TRUE,

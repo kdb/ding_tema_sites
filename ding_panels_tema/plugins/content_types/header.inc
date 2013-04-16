@@ -1,8 +1,19 @@
 <?php
 /**
  * @file
- * Provides several tema related panels content types.
+ * Provides a tema site panels content type.
  */
+
+$plugin = array(
+  'single' => TRUE,
+  'category' => t('Tema page'),
+  'title' => t('Tema header and navigation menu'),
+  'description' => t('The title image, title and navigation menu for a tema page.'),
+  'required context' => array(
+    new ctools_context_required(t('Tema node'), 'node'),
+    new ctools_context_optional(t('Content node'), 'node'),
+  ),
+);
 
 /**
  * Callback function to supply a list of content types.
@@ -17,32 +28,24 @@ function ding_panels_tema_header_ctools_content_types() {
 }
 
 /**
- * Callback function to supply a list of content types.
- */
-function ding_panels_tema_header_content_type_content_types() {
-  $types = array(
-    'tema_header' => array(
-      'category' => t('Tema page'),
-      'title' => t('Tema header and navigation menu'),
-      'description' => t('The title image, title and navigation menu for a tema page.'),
-      'required context' => new ctools_context_required(t('Node'), 'node'),
-    ),
-  );
-
-  return $types;
-}
-
-/**
  * Return the pane contents.
  */
 function ding_panels_tema_header_content_type_render($subtype, $conf, $panel_args, $context) {
   $block = new stdClass();
-  $node = isset($context->data) ? drupal_clone($context->data) : NULL;
+  $tema_node = isset($context[0]->data) ? $context[0]->data : NULL;
+  $content_node = isset($context[1]->data) ? $context[1]->data : NULL;
+
+  // If provided a content node via context, check if the content node 
+  // also has a library reference. If it does, return an empty block, 
+  // since we don't want both library navigation and tema site navigation.
+  if (!empty($content_node) && !empty($content_node->field_library_ref[0]['nid'])) {
+    return $block;
+  }
 
   switch($subtype) {
     case 'tema_header':
-      if ($node->type == 'tema_site') {
-        $block->content = theme('ding_panels_tema_content_header', $node, $conf);
+      if ($tema_node->type == 'tema_site') {
+        $block->content = theme('ding_panels_tema_content_header', $tema_node, $conf);
       }
       break;
   }
@@ -55,7 +58,7 @@ function ding_panels_tema_header_content_type_render($subtype, $conf, $panel_arg
 function ding_panels_tema_header_content_type_admin_title($subtype, $conf, $context) {
   switch($subtype) {
     case 'tema_header':
-      return t('"@s":  Tema header', array('@s' => $context->identifier));
+      return t('Tema site header');
   }
 }
 
